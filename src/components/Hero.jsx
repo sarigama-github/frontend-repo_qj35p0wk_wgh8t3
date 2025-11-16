@@ -1,10 +1,21 @@
-import Spline from '@splinetool/react-spline'
-
 export default function Hero() {
+  const videoSrc = import.meta.env.VITE_HERO_VIDEO ||
+    'https://videos.pexels.com/video-files/856981/856981-uhd_2560_1440_25fps.mp4';
+  const poster = 'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=1600&q=80';
+
   return (
     <section className="relative h-[70vh] md:h-[80vh] w-full overflow-hidden">
       <div className="absolute inset-0">
-        <Spline scene="https://prod.spline.design/7m4PRZ7kg6K1jPfF/scene.splinecode" style={{ width: '100%', height: '100%' }} />
+        <video
+          className="w-full h-full object-cover"
+          src={videoSrc}
+          poster={poster}
+          autoPlay
+          muted
+          loop
+          playsInline
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-fuchsia-900/60 via-purple-900/30 to-transparent" />
       </div>
 
       <div className="relative z-10 h-full flex items-center">
@@ -19,8 +30,6 @@ export default function Hero() {
           </div>
         </div>
       </div>
-
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-fuchsia-900/50 via-purple-900/30 to-transparent" />
     </section>
   )
 }
